@@ -1,7 +1,7 @@
 import React ,{ useState }from 'react';
 import { StyleSheet, Text, View ,ScrollView,Button,TextInput,KeyboardAvoidingView} from 'react-native';
 import Modal from 'react-native-modalbox';
-import TopScreen from './src/TopScreen';
+import TopScreen from './src/Screen/TopScreen';
 
 
 

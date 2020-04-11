@@ -1,6 +1,8 @@
 import React ,{ useState }from 'react';
-import { StyleSheet, Text, View ,ScrollView,Button,TextInput,KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,TextInput,} from 'react-native';
 import Modal from 'react-native-modalbox';
+import TaskCard from '../Compornent/TaskCard';
+
 
 
 export default function TopScreen() {
@@ -32,9 +34,8 @@ export default function TopScreen() {
       <View style={styles.brake}>
         <Text style={styles.bgText}>Today's Task</Text>
         <View style={styles.taskAddButtonShadow}/>
-        <Button style={styles.taskAddButton} onPress={openModal} title="aa">
-      
-        </Button>
+        <TouchableOpacity style={styles.taskAddButton} onPress={openModal} >
+        </TouchableOpacity>
       </View>
       <Modal
      style={styles.taskAddScreen}
@@ -46,55 +47,11 @@ export default function TopScreen() {
         <TextInput autoFocus={true} style={styles.taskInput} placeholder='タスクを入力してください。'>
         </TextInput>
    </Modal>
-      <ScrollView showsVerticalScrollIndicator={false} >
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
-        <Text>aaa</Text>
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.taskList} alignItems='center'>
+        <TaskCard　task='朝ごはん'/>
+        <TaskCard　task='夜ご飯の準備'/>
+
+        
       </ScrollView>
     </View>
   );
@@ -241,7 +198,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#ddd',
+    
+
   },
 
   bgText:{
@@ -250,6 +208,7 @@ const styles = StyleSheet.create({
     letterSpacing:3,
     backgroundColor: '#F1F3F6',
     marginLeft:10,
+    
 
   },
 
@@ -257,7 +216,7 @@ const styles = StyleSheet.create({
     height:50,
     width:50,
     borderRadius:25,
-    backgroundColor: '#000',
+    backgroundColor: '#F1F3F6',
     marginLeft:'auto',
     alignItems: 'center',
     justifyContent: 'center',
@@ -289,17 +248,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
   },
 
-  taskList: {
-    height:'100%',
-    // flex: 0.2,
-    width:'85%',
-    // marginTop:20,
-    // paddingTop:'%',
-    // flexDirection: 'row',
-    // justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ddd',
-  },
 
   taskAddScreen: {
     // position:'absolute',
@@ -329,6 +277,56 @@ const styles = StyleSheet.create({
     backgroundColor: '#F1F3F6',
     fontSize:20,
   },
+
+  taskList:{
+    height:'50%',
+    width:'85%',
+    paddingTop:5,
+    // backgroundColor:'#ccc',
+    zIndex:0,
+  },
+
+  taskContainer: {
+    // height:70,
+    width:300,
+    borderRadius:10,
+    padding:10,
+    backgroundColor: '#F1F3F6',
+    justifyContent: 'center',
+    shadowColor: '#3754AA',
+    shadowOffset: {
+    width: 4,
+    height: 4,
+    },
+    shadowRadius: 3,
+    shadowOpacity: 0.1,
+  },
+
+  taskText:{
+    fontSize:20,
+  },
+
+  taskContainerShadow:{
+    
+    borderRadius:25,
+    backgroundColor: '#F1F3F6',
+    shadowColor: '#fff',
+    shadowOffset: {
+      width: -3,
+      height: -3,
+    },
+    shadowRadius: 2,
+    shadowOpacity: 1,
+  },
+
+  method:{
+      height:30,
+      width:'100%',
+      marginTop:10,
+      backgroundColor: '#ccc',
+
+  },
+
 
 
 });
