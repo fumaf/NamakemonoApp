@@ -5,8 +5,10 @@ import TaskCard from '../Compornent/TaskCard';
 
 
 
-export default function TopScreen() {
+export default function TopScreen(props) {
   const [addModal, setAddModal] = useState(false);
+  const [disable, setDisable] = useState(false);
+  const [count, setCount] = useState('aaa');
 
   const openModal = () => {
     setAddModal(true);
@@ -16,15 +18,24 @@ export default function TopScreen() {
     setAddModal(false);
   };
 
+  // const changing = () => {
+  //   setDisable(true);
+  // };
+
+  // const changed = () => {
+  //   setDisable(false);
+  // };
+  
   return (
     <View style={styles.container}>
       <View style={styles.checkBoxes}>
         <View style={styles.namakemonoCheckBoxShadow}/>
-        <View style={styles.namakemonoCheckBox}>
-        </View>
+        <TouchableOpacity style={styles.namakemonoCheckBox} onPress={ () => props.navigation.navigate('NamakemonoListScreen') }>
+          
+        </TouchableOpacity>
         <View style={styles.doneCheckBoxShadow}/>
-        <View style={styles.doneCheckBox}>
-        </View>
+        <TouchableOpacity style={styles.doneCheckBox} onPress={ () => props.navigation.navigate('DoneListScreen') }>
+        </TouchableOpacity>
       </View>
       <View style={styles.imageBox}>
         <View style={styles.imageShadow}/>
@@ -33,7 +44,7 @@ export default function TopScreen() {
       </View>
       <View style={styles.brake}>
         <Text style={styles.bgText}>Today's Task</Text>
-        <View style={styles.taskAddButtonShadow}/>
+        <TouchableOpacity style={styles.taskAddButtonShadow}/>
         <TouchableOpacity style={styles.taskAddButton} onPress={openModal} >
         </TouchableOpacity>
       </View>
@@ -42,14 +53,29 @@ export default function TopScreen() {
     //  ref={this.modalRef}
      isOpen={addModal}
      onClosed={closeModal}
+    //  isDisabled={disable}
      >
      
-        <TextInput autoFocus={true} style={styles.taskInput} placeholder='タスクを入力してください。'>
+        <TextInput 
+        autoFocus={true} 
+        style={styles.taskInput} 
+        placeholder='タスクを入力してください。' 
+        enablesReturnKeyAutomatically={true} 
+        // onEndEditing={changed}
+        // onChangeText={changing}
+        >
         </TextInput>
    </Modal>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.taskList} alignItems='center'>
-        <TaskCard　task='朝ごはん'/>
+        <TaskCard　task={count}/>
         <TaskCard　task='夜ご飯の準備'/>
+        <TaskCard　task='夜ご飯の準備'/>
+        <TaskCard　task='夜ご飯の準備ああああああああああああああああああああああああああああああ'/>
+        <TaskCard　task='夜ご飯の準備'/>
+        <TaskCard　task='夜ご飯の準備'/>
+        <TaskCard　task='夜ご飯の準備'/>
+        <TaskCard　task='夜ご飯の準備'/>
+
 
         
       </ScrollView>

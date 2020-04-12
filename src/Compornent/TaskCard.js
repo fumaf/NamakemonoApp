@@ -36,11 +36,12 @@ const styles = StyleSheet.create({
   },
 
   taskText:{
-    fontSize:20,
+    fontSize:15,
   },
 
   taskContainerShadow:{  
     borderRadius:25,
+    marginTop:10,
     backgroundColor: '#F1F3F6',
     shadowColor: '#fff',
     shadowOffset: {
@@ -51,8 +52,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
   },
 
+
   method:{
-      height:30,
+      height:20,
       width:'100%',
       marginTop:10,
       backgroundColor: '#ccc',
