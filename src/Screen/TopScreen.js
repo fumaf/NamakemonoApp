@@ -1,5 +1,5 @@
 import React ,{ useState }from 'react';
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,TextInput,} from 'react-native';
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,TextInput,Form} from 'react-native';
 import Modal from 'react-native-modalbox';
 import TaskCard from '../Compornent/TaskCard';
 
@@ -9,6 +9,26 @@ export default function TopScreen(props) {
   const [addModal, setAddModal] = useState(false);
   const [disable, setDisable] = useState(false);
   const [count, setCount] = useState('aaa');
+  const [toDo, setToDo] = useState('qqq');
+
+
+  const initialState = [
+    {
+        task: 'Learn vue.js',
+        isCompleted: false
+    },
+    {
+        task: 'Learn React Hook',
+        isCompleted: false
+    },
+    {
+        task: 'Learn Gatsby.js',
+        isCompleted: false
+    },     
+]
+
+const [anans, setAnan] = useState(initialState);
+
 
   const openModal = () => {
     setAddModal(true);
@@ -18,13 +38,19 @@ export default function TopScreen(props) {
     setAddModal(false);
   };
 
-  // const changing = () => {
-  //   setDisable(true);
-  // };
 
-  // const changed = () => {
-  //   setDisable(false);
-  // };
+const listItems = anans.map((anan, index) => (
+  <TaskCard key={ index } task={ anan.task }/>
+  ));
+
+const handleNewTask = (text) => {
+    setToDo( text )
+}
+
+const handleSubmit = () => {
+  setAnan(anans => [...anans,{ task:toDo, isCompleted: false}])
+  setToDo('')
+}
   
   return (
     <View style={styles.container}>
@@ -55,26 +81,24 @@ export default function TopScreen(props) {
      onClosed={closeModal}
     //  isDisabled={disable}
      >
-     
         <TextInput 
         autoFocus={true} 
         style={styles.taskInput} 
         placeholder='タスクを入力してください。' 
         enablesReturnKeyAutomatically={true} 
-        // onEndEditing={changed}
+        // value={ toDo }
+        onChangeText={handleNewTask}
+
+        onEndEditing={handleSubmit}
+        // onEndEditing={handleNewTask}
         // onChangeText={changing}
         >
         </TextInput>
    </Modal>
       <ScrollView showsVerticalScrollIndicator={false} style={styles.taskList} alignItems='center'>
-        <TaskCard　task={count}/>
-        <TaskCard　task='夜ご飯の準備'/>
-        <TaskCard　task='夜ご飯の準備'/>
-        <TaskCard　task='夜ご飯の準備ああああああああああああああああああああああああああああああ'/>
-        <TaskCard　task='夜ご飯の準備'/>
-        <TaskCard　task='夜ご飯の準備'/>
-        <TaskCard　task='夜ご飯の準備'/>
-        <TaskCard　task='夜ご飯の準備'/>
+        {listItems}
+      
+       
 
 
         
